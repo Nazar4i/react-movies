@@ -17,9 +17,19 @@ export class Main extends Component {
     }
 
     componentDidMount() {
-        fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=matrix`)
+        fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=matrix`)
         .then(response => response.json())
-        .then(data => this.setState({movies: data.Search, totalResults: data.totalResults, loading: false}));
+        .then(data => this.setState(
+            {
+                movies: data.Search,
+                totalResults: data.totalResults,
+                loading: false
+            }
+        ))
+        .catch((err) => {
+            console.error(err);
+            this.setState({loading: false})
+        });
     }
 
     searchMovies = (str, type = 'all') => {
@@ -28,9 +38,19 @@ export class Main extends Component {
             return;
         }
 
-        fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${str}&${type !== 'all' ? `type=${type}` : ''}`)
+        fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${str}&${type !== 'all' ? `type=${type}` : ''}`)
         .then(response => response.json())
-        .then(data => this.setState({movies: data.Search, totalResults: data.totalResults, loading: false}));
+        .then(data => this.setState(
+            {
+                movies: data.Search,
+                totalResults: data.totalResults,
+                loading: false
+            }
+        ))
+        .catch((err) => {
+            console.error(err);
+            this.setState({loading: false})
+        });
     }
 
     render() {

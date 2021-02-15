@@ -2,7 +2,7 @@
   "name": "react-movies",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Nazar4i.github.io/react-movies",
+  "homepage": "https://nazar4i.github.io/react-movies",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
